@@ -29,3 +29,16 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html')
 
+# Rota para cadastro de itens
+@app.route('/item', methods=['GET','POST'])
+def item():
+    if request.method == 'POST':
+        name = request.form['name']
+        quantity = int(request.form['quantity'])
+        value = int(request.form['value'])
+        item.append({'name': name, 'quantity': quantity, 'value': value})
+        return "Item cadastrado com sucesso!"
+    return render_template('item.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
