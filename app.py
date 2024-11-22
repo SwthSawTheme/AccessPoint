@@ -35,8 +35,8 @@ def item():
     if request.method == 'POST':
         name = request.form['name']
         quantity = int(request.form['quantity'])
-        value = int(request.form['value'])
-        item.append({'name': name, 'quantity': quantity, 'value': value})
+        value = float(request.form['value'])
+        items.append({'name': name, 'quantity': quantity, 'value': value})
         return "Item cadastrado com sucesso!"
     return render_template('item.html')
 

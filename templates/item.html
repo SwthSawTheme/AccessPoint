@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>Cadastro de Item</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Cadastro de Item</h1>
-    <form method="POST">
-        <label>Nome do Item:</label>
-        <input type="text" name="name" required><br>
-        <label>Quantidade:</label>
-        <input type="number" name="quantity" required><br>
-        <label>Valor:</label>
-        <input type="number" step="0.01" name="value" required><br>
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="container">
+        <h1>Cadastro de Item</h1>
+        <form method="POST">
+            <label>Nome do Item:</label>
+            <input type="text" name="name" required>
+            <label>Quantidade:</label>
+            <input type="number" name="quantity" required>
+            <label>Valor:</label>
+            <input type="number" step="0.01" name="value" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
