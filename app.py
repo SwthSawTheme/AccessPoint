@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect,url_for
+from flask import Flask, render_template, request, redirect,url_for,flash
 
 app = Flask(__name__)
+app.secret_key = 'chave_secreta'
 
 # Simulação de base de dados (apenas para teste)
 users = {} # {'username': 'password'}
@@ -14,7 +15,8 @@ def login():
         password = request.form['password']
         if username in users and users[username] == password:
             return redirect(url_for('item'))
-        return "Login inválido", 403
+        flash("Usuário ou senha inválidos. Tente novamente.")
+        return redirect(url_for('login'))
     return render_template('login.html')
 
 # Rota para cadastro de itens
@@ -24,7 +26,8 @@ def register():
         username = request.form['username']
         password = request.form['password']
         if username in users:
-            return "Usuário ja existe", 409
+            flash("Usuário já registrado!")
+            return redirect(url_for('register'))
         users[username] = password
         return redirect(url_for('login'))
     return render_template('register.html')

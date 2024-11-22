@@ -7,6 +7,13 @@
 <body>
     <div class="container">
         <h1>Cadastro de Usuário</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div style="color: red; text-align: center; margin-bottom: 15px;">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
         <form method="POST">
             <label>Usuário:</label>
             <input type="text" name="username" required>
